@@ -2,13 +2,15 @@ const app = require("./app.js");
 const sequelize = require("./src/database/database.js");
 require("dotenv").config();
 
+const PORT = process.env.PORT || 4000;
+
 async function main() {
   try {
     await sequelize.sync();
     // await sequelize.sync({force: true});
     console.log("Connection has been established successfully.");
-    app.listen(4000);
-    console.log("Server is listening on port", 4000);
+    app.listen(PORT);
+    console.log("Server is listening on port", PORT);
   } catch (error) {
     console.error("Unable to connect to the database:", error);
   }
