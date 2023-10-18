@@ -1,4 +1,5 @@
 const { Sequelize } = require('sequelize');
+require("dotenv").config();
 
 // const sequelize = new Sequelize("chatbot", "postgres", "admin", {
 //   host: "localhost",
@@ -6,10 +7,10 @@ const { Sequelize } = require('sequelize');
 //   port: '5434'
 // });
 
-const sequelize = new Sequelize("chatbot-api", "fl0user", "FbTVqRy16YOw", {
-  host: "ep-odd-grass-06468340.us-east-2.aws.neon.fl0.io",
-  dialect: "postgres",
-  port: '5432',
+const sequelize = new Sequelize(process.env.DATABASE, process.env.USER, process.env.PASSWORD, {
+  host: process.env.HOST,
+  dialect: process.env.DIALECT,
+  port: process.env.PORT,
   dialectOptions: {
     "ssl": {
        "require": true
