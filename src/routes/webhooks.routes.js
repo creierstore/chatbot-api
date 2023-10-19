@@ -4,7 +4,8 @@ const router = require("express").Router();
 
 
 router.post("/product-created", async (req, res) => {
-    
+    console.log("WEBHOOK CREATE PRODUCT: ", req.body);
+
     try {
         const newProduct = extractProductInfo(req.body);
 
@@ -29,7 +30,7 @@ router.post("/product-created", async (req, res) => {
 
 router.post("/product-updated", (req, res) => {
 
-    // console.log("Update Response: ", req.body);
+    console.log("WEBHOOK UPDATE PRODUCT: ", req.body);
 
     const product = extractProductInfo(req.body);
     updateProducto(product, product.idProduct);
