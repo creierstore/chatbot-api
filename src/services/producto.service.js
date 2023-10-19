@@ -18,15 +18,16 @@ const searchProducto = async (data) => {
   }
 };
 
-const createPoducto = async (producto) => {
-  const { title, price, description, image, productId } = producto;
+const createProducto = async (producto) => {
+  const { title, price, description, image, idProduct } = producto;
+
   try {
     const newData = await Producto.create({
       title,
       price,
       description,
       image,
-      productId
+      idProduct
       // categoriaId,
     });
 
@@ -97,7 +98,7 @@ function transformHtmlToPlainText(htmlDescription) {
 
 module.exports = {
   searchProducto,
-  createPoducto,
+  createProducto,
   isProductInDB,
   updateProducto,
   transformHtmlToPlainText

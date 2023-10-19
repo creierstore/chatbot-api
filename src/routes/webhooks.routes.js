@@ -1,16 +1,18 @@
-const { createProducto } = require("../controllers/productos.controller");
-const { isProductInDB, updateProducto } = require("../services/producto.service");
+const { isProductInDB, updateProducto, createProducto, transformHtmlToPlainText } = require("../services/producto.service");
 
 const router = require("express").Router();
 
 
 router.post("/product-created", async (req, res) => {
+    
     try {
         const newProduct = extractProductInfo(req.body);
 
         console.log({ newProduct });
 
-        if (await isProductInDB(newProduct.productId)) {
+        // console.log(req.body)
+
+        if (await isProductInDB(newProduct.idProduct)) {
             throw new Error("Product already exists");
         }
 
@@ -30,7 +32,7 @@ router.post("/product-updated", (req, res) => {
     // console.log("Update Response: ", req.body);
 
     const product = extractProductInfo(req.body);
-    updateProducto(product, product.productId);
+    updateProducto(product, product.idProduct);
 
     res.send(product);
 });
@@ -54,11 +56,13 @@ function extractProductInfo(jsonData) {
     return {
         title,
         image: imageUrl,
-        productId: id,
+        idProduct: id,
         price,
-        description: body_html,
+        description: transformHtmlToPlainText(body_html) ,
     };
 }
+
+
 
 
 module.exports = router;
