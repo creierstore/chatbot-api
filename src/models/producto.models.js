@@ -18,10 +18,10 @@ const Producto = sequelize.define("productos", {
     type: DataTypes.FLOAT,
   },
   description: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   image: {
-    type: DataTypes.STRING,
+    type: DataTypes.TEXT,
   },
   link: {
     type: DataTypes.STRING,
