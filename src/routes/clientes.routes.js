@@ -5,6 +5,7 @@ const {
   updateCliente,
   deleteCliente,
   getCliente,
+  getClienteTelefono
 } = require("../controllers/clientes.controller");
 
 const router = Router();
@@ -14,5 +15,6 @@ router.post("/clientes", createCliente);
 router.put("/clientes/:id", updateCliente);
 router.delete("/clientes/:id", deleteCliente);
 router.get("/clientes/:id", getCliente);
+router.get("/clientes-phone", getClienteTelefono);
 
 module.exports = router;
