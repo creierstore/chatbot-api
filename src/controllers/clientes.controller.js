@@ -28,6 +28,25 @@ const getCliente = async (req, res) => {
   }
 };
 
+const getClienteTelefono = async (req, res) => {
+  console.log("LO QUE LLEGA",req.params);
+  const { telephone } = req.params;
+
+  try {
+    const data = await Cliente.findOne({
+      where: {
+        telephone,
+      },
+    });
+    if (!data) {
+      return res.status(404).json({ message: "No se encontro!" });
+    }
+    res.json(data);
+  } catch (error) {
+    return res.status(500).json({ message: error.message });
+  }
+};
+
 const createCliente = async (req, res) => {
   const { name, telephone } = req.body;
 
@@ -81,6 +100,7 @@ const deleteCliente = async (req, res) => {
 module.exports = {
   getClientes,
   getCliente,
+  getClienteTelefono,
   createCliente,
   updateCliente,
   deleteCliente,
