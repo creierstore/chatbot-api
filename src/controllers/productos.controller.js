@@ -117,11 +117,30 @@ const buscarProductoPorString = async (req, res) => {
   }
 };
 
+
+const getProductoByCustomQuery = async (req, res) => {
+  try {
+    const { query } = req.body;
+    const response = await sequelize.query(query);
+
+    res.status(200).json({
+      ok: true,
+      statusCode: 200,
+      data: response[0].flat(1)
+    });
+
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: 'Hubo un error en la solicitud' });
+  }
+}
+
 module.exports = {
   getProductos,
   getProducto,
   createProducto,
   updateProducto,
   deleteProducto,
-  buscarProductoPorString
+  buscarProductoPorString,
+  getProductoByCustomQuery
 };

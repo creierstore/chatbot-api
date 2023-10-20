@@ -5,7 +5,8 @@ const {
   updateProducto,
   deleteProducto,
   getProducto,
-  buscarProductoPorString
+  buscarProductoPorString,
+  getProductoByCustomQuery
 } = require("../controllers/productos.controller");
 
 const router = Router();
@@ -16,5 +17,6 @@ router.put("/productos/:id", updateProducto);
 router.delete("/productos/:id", deleteProducto);
 router.get("/productos/:id", getProducto);
 router.get("/productos/buscar/:q", buscarProductoPorString);
+router.post("/productos/custom-query", getProductoByCustomQuery);
 
 module.exports = router;
