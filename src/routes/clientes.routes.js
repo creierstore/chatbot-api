@@ -15,6 +15,6 @@ router.post("/clientes", createCliente);
 router.put("/clientes/:id", updateCliente);
 router.delete("/clientes/:id", deleteCliente);
 router.get("/clientes/:id", getCliente);
-router.get("/clientes-phone", getClienteTelefono);
+router.get("/clientes-phone/:telephone", getClienteTelefono);
 
 module.exports = router;

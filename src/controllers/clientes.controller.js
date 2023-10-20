@@ -29,7 +29,8 @@ const getCliente = async (req, res) => {
 };
 
 const getClienteTelefono = async (req, res) => {
-  const { telephone } = req.body;
+  console.log("LO QUE LLEGA",req.params);
+  const { telephone } = req.params;
 
   try {
     const data = await Cliente.findOne({
