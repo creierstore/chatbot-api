@@ -12,6 +12,7 @@ app.use('/', require("./src/routes/pedidos.routes"));
 app.use('/', require("./src/routes/pedido-detalles.routes"));
 app.use('/', require("./src/routes/whatsapp.routes"));
 app.use('/', require('./src/routes/webhooks.routes'));
+app.use('/', require('./src/routes/servicios.routes'));
 
 
 module.exports = app;
